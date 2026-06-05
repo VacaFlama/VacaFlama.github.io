@@ -13,7 +13,7 @@ const { content } = Astro.props;
     <a class="flex items-center gap-3" href={content.lang === "es" ? "/" : "/en/"}>
       <img class="h-12 w-auto max-w-[12rem] object-contain sm:max-w-[15rem]" src={content.hero.logo} alt="VacaFlama" />
     </a>
-    <div class="flex flex-wrap items-center justify-end gap-3 text-sm font-semibold sm:gap-5">
+    <div class="flex flex-wrap items-center justify-end gap-3 text-sm font-bold sm:gap-5 sm:text-base">
       {
         content.nav.map((item) => (
           <a class="text-white/78 transition hover:text-flame" href={item.href}>
@@ -22,7 +22,7 @@ const { content } = Astro.props;
         ))
       }
       <a
-        class="rounded-full border border-flame/50 px-3 py-1.5 text-white transition hover:border-flame hover:bg-flame"
+        class="rounded-full border border-flame/50 px-3 py-1.5 text-white transition hover:border-flame hover:bg-flame sm:px-4"
         href={content.alternateHref}
         aria-label={`${content.languageLabel}: ${content.alternateLabel}`}
       >
