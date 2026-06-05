@@ -10,7 +10,7 @@ const { content } = Astro.props;
 
 <section
   class="relative isolate flex min-h-[94vh] items-end overflow-hidden bg-ink pt-28 text-white"
-  style={`background-image: radial-gradient(circle at 18% 42%, rgba(242, 11, 28, 0.44), transparent 28%), linear-gradient(90deg, rgba(8, 5, 4, 0.96), rgba(8, 5, 4, 0.78) 44%, rgba(8, 5, 4, 0.18)), url('${content.hero.background}'); background-size: cover; background-position: center;`}
+  style={`background-image: radial-gradient(circle at 18% 42%, rgba(229, 31, 41, 0.42), transparent 28%), radial-gradient(circle at 78% 24%, rgba(107, 179, 242, 0.16), transparent 24%), linear-gradient(90deg, rgba(3, 3, 4, 0.96), rgba(3, 3, 4, 0.78) 44%, rgba(3, 3, 4, 0.18)), url('${content.hero.background}'); background-size: cover; background-position: center;`}
 >
   <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink to-transparent"></div>
   <div class="section-shell relative pb-16 pt-20 sm:pb-20 lg:pb-24">
@@ -29,7 +29,7 @@ const { content } = Astro.props;
           {content.hero.primaryCta}
         </a>
         <a
-          class="rounded-md border border-horn/70 px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-white transition hover:border-horn hover:bg-horn hover:text-ink"
+          class="rounded-md border border-nitro/70 px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-white transition hover:border-nitro hover:bg-nitro hover:text-ink"
           href={content.nav[2]?.href}
         >
           {content.hero.secondaryCta}

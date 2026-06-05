@@ -8,7 +8,7 @@ type Props = {
 const { content } = Astro.props;
 ---
 
-<footer class="border-t border-flame/20 bg-black py-8 text-white/70">
+<footer class="border-t border-flame/20 bg-ink py-8 text-white/70">
   <div class="section-shell flex flex-col gap-3 text-sm sm:flex-row sm:items-center sm:justify-between">
     <p>{content.footer.copyright}</p>
     <a class="font-extrabold text-flame transition hover:text-white" href={content.lang === "es" ? "/" : "/en/"}>
