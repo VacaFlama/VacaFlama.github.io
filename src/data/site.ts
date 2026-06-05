@@ -20,7 +20,10 @@ export type Member = {
   name: string;
   role: string;
   image: string;
-  instagram?: string;
+  links: Array<{
+    label: "Web" | "Instagram" | "LinkedIn" | "GitHub";
+    href: string;
+  }>;
 };
 
 export type SiteContent = {
@@ -151,28 +154,32 @@ const sharedProjects = {
 
 const members: Member[] = [
   {
-    name: "Jordan A. Amaya Carmona",
+    name: "Jordan Amaya",
     role: "Programador",
     image: "/assets/img/team/JordanNueva.jpg",
-    instagram: "https://www.instagram.com/mrjxrdxn/",
+    links: [
+      { label: "Web", href: "https://jaamaya.github.io" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/jordanamaya/" },
+      { label: "GitHub", href: "https://github.com/JAAmaya" },
+    ],
   },
   {
     name: "Alejandro Alonso Pérez",
     role: "Programador",
     image: "/assets/img/team/AlexNueva.jpg",
-    instagram: "https://www.instagram.com/alextoteles01/",
+    links: [{ label: "Instagram", href: "https://www.instagram.com/alextoteles01/" }],
   },
   {
     name: "Ikaro Arde",
     role: "Artista",
     image: "/assets/img/team/ikaro.jpg",
-    instagram: "https://www.instagram.com/ikaroarde/",
+    links: [{ label: "Instagram", href: "https://www.instagram.com/ikaroarde/" }],
   },
   {
     name: "Félix Álvarez Diez",
     role: "Artista",
     image: "/assets/img/team/felix.jpg",
-    instagram: "https://www.instagram.com/felixalvarz/",
+    links: [{ label: "Instagram", href: "https://www.instagram.com/felixalvarz/" }],
   },
 ];
 
