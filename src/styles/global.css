@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  background: #fff7ed;
+  color: #111827;
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  background: #f97316;
+  color: #ffffff;
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+}
+
+.section-kicker {
+  @apply text-sm font-bold uppercase tracking-[0.18em] text-ember;
+}

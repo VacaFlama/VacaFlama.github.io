@@ -1,0 +1,35 @@
+---
+import type { SiteContent } from "../data/site";
+
+type Props = {
+  content: SiteContent;
+};
+
+const { content } = Astro.props;
+const sectionId = content.lang === "es" ? "quienes-somos" : "about";
+---
+
+<section id={sectionId} class="bg-orange-50 py-20 sm:py-24">
+  <div class="section-shell grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+    <div>
+      <p class="section-kicker">VacaFlama</p>
+      <h2 class="mt-3 font-display text-3xl font-extrabold sm:text-5xl">{content.about.title}</h2>
+    </div>
+    <div class="space-y-6">
+      {
+        content.about.paragraphs.map((paragraph) => (
+          <p class="text-lg leading-8 text-slate-700">{paragraph}</p>
+        ))
+      }
+      <div class="flex flex-wrap gap-3 pt-2">
+        {
+          content.about.highlights.map((highlight) => (
+            <span class="rounded-full border border-ember/30 bg-white px-4 py-2 text-sm font-bold text-ember">
+              {highlight}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

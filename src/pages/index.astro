@@ -1,0 +1,8 @@
+---
+import Page from "../components/Page.astro";
+import { getContent } from "../data/site";
+
+const content = getContent("es");
+---
+
+<Page content={content} />

@@ -1,0 +1,30 @@
+---
+import type { SiteContent } from "../data/site";
+
+type Props = {
+  content: SiteContent;
+};
+
+const { content } = Astro.props;
+const sectionId = content.lang === "es" ? "contacto" : "contact";
+---
+
+<section id={sectionId} class="bg-white py-20 sm:py-24">
+  <div class="section-shell">
+    <div class="rounded-lg border border-slate-200 bg-gradient-to-br from-orange-50 via-white to-lime-50 p-8 shadow-soft sm:p-12">
+      <p class="section-kicker">{content.contact.title}</p>
+      <div class="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <h2 class="font-display text-3xl font-extrabold sm:text-5xl">{content.contact.copy}</h2>
+          <p class="mt-4 text-lg text-slate-600">{content.contact.email}</p>
+        </div>
+        <a
+          class="inline-flex w-fit rounded-full bg-flame px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-ember"
+          href={`mailto:${content.contact.email}`}
+        >
+          {content.contact.emailLabel}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
