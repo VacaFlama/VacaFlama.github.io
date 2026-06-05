@@ -18,7 +18,7 @@ const sectionId = content.lang === "es" ? "proyectos" : "projects";
     </div>
     <div class="mt-12 grid gap-7 lg:grid-cols-3">
       {
-        content.projects.items.map((project) => (
+        content.projects.items.map((project, index) => (
           <article class="group overflow-hidden rounded-lg border border-flame/20 bg-panel shadow-soft transition duration-300 hover:-translate-y-1 hover:border-flame/60">
             <div class="aspect-[4/3] overflow-hidden bg-black">
               <img
@@ -42,18 +42,31 @@ const sectionId = content.lang === "es" ? "proyectos" : "projects";
                   <dd class="text-right text-white/68">{project.release}</dd>
                 </div>
               </dl>
-              {
-                project.link ? (
-                  <a
-                    class="mt-6 inline-flex w-fit items-center rounded-md bg-flame px-5 py-2.5 text-sm font-extrabold uppercase tracking-wide text-white transition hover:bg-ember"
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {content.projects.cta}
-                  </a>
-                ) : null
-              }
+              <div class="mt-6 flex flex-wrap gap-3">
+                {
+                  project.link ? (
+                    <a
+                      class="inline-flex w-fit items-center rounded-md bg-flame px-5 py-2.5 text-sm font-extrabold uppercase tracking-wide text-white transition hover:bg-ember"
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {content.projects.cta}
+                    </a>
+                  ) : null
+                }
+                {
+                  project.quickView ? (
+                    <button
+                      class="inline-flex w-fit items-center rounded-md border border-nitro/55 px-5 py-2.5 text-sm font-extrabold uppercase tracking-wide text-white transition hover:border-nitro hover:bg-nitro hover:text-ink"
+                      type="button"
+                      data-quick-view-open={`project-quick-view-${content.lang}-${index}`}
+                    >
+                      {project.quickView.label}
+                    </button>
+                  ) : null
+                }
+              </div>
             </div>
           </article>
         ))
@@ -61,3 +74,90 @@ const sectionId = content.lang === "es" ? "proyectos" : "projects";
     </div>
   </div>
 </section>
+
+{
+  content.projects.items.map((project, index) =>
+    project.quickView ? (
+      <div
+        class="fixed inset-0 z-[80] hidden items-center justify-center bg-ink/90 p-4 backdrop-blur"
+        data-quick-view-modal={`project-quick-view-${content.lang}-${index}`}
+        aria-hidden="true"
+      >
+        <div class="w-full max-w-5xl rounded-lg border border-flame/30 bg-panel shadow-brand">
+          <div class="flex items-center justify-between gap-4 border-b border-flame/20 p-4 sm:p-5">
+            <h3 class="font-display text-xl font-extrabold text-white sm:text-2xl">
+              {project.quickView.title}
+            </h3>
+            <button
+              class="grid size-10 place-items-center rounded-md border border-white/20 text-xl font-extrabold text-white transition hover:border-flame hover:bg-flame"
+              type="button"
+              data-quick-view-close
+              aria-label={content.lang === "es" ? "Cerrar vista rápida" : "Close quick view"}
+            >
+              ×
+            </button>
+          </div>
+          <div class="aspect-video bg-black">
+            <iframe
+              class="h-full w-full"
+              data-quick-view-src={project.quickView.embedUrl}
+              title={project.quickView.title}
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    ) : null,
+  )
+}
+
+<script>
+  const closeQuickView = (modal: Element) => {
+    if (!(modal instanceof HTMLElement)) return;
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    modal.setAttribute("aria-hidden", "true");
+    const iframe = modal.querySelector("iframe");
+    if (iframe instanceof HTMLIFrameElement) {
+      iframe.removeAttribute("src");
+    }
+  };
+
+  document.querySelectorAll("[data-quick-view-open]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const modalId = button.getAttribute("data-quick-view-open");
+      const modal = document.querySelector(`[data-quick-view-modal="${modalId}"]`);
+      if (!(modal instanceof HTMLElement)) return;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      modal.setAttribute("aria-hidden", "false");
+      const iframe = modal.querySelector("iframe");
+      if (iframe instanceof HTMLIFrameElement && !iframe.src) {
+        const src = iframe.dataset.quickViewSrc;
+        if (src) iframe.src = src;
+      }
+      const closeButton = modal.querySelector("[data-quick-view-close]");
+      if (closeButton instanceof HTMLElement) {
+        closeButton.focus();
+      }
+    });
+  });
+
+  document.querySelectorAll("[data-quick-view-modal]").forEach((modal) => {
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeQuickView(modal);
+      }
+    });
+    modal.querySelector("[data-quick-view-close]")?.addEventListener("click", () => {
+      closeQuickView(modal);
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    document.querySelectorAll('[data-quick-view-modal][aria-hidden="false"]').forEach(closeQuickView);
+  });
+</script>

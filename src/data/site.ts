@@ -14,6 +14,11 @@ export type Project = {
   cover: string;
   image: string;
   link?: string;
+  quickView?: {
+    label: string;
+    title: string;
+    embedUrl: string;
+  };
 };
 
 export type Member = {
@@ -81,6 +86,9 @@ const brand = {
   hero: "/assets/sunburn/sunburn-gameplay.png",
 };
 
+const sunBurnTrailerEmbed =
+  "https://drive.google.com/file/d/1moDcHgxvWXeWJ2zv_77XbwuNSbVYAr5t/preview";
+
 const sharedProjects = {
   es: [
     {
@@ -114,6 +122,11 @@ const sharedProjects = {
       release: "En desarrollo",
       cover: "/assets/sunburn/sunburn-banner.png",
       image: "/assets/sunburn/sunburn-poster.png",
+      quickView: {
+        label: "Ver trailer",
+        title: "Trailer de Sun Burn Nitro",
+        embedUrl: sunBurnTrailerEmbed,
+      },
     },
   ],
   en: [
@@ -148,6 +161,11 @@ const sharedProjects = {
       release: "In development",
       cover: "/assets/sunburn/sunburn-banner.png",
       image: "/assets/sunburn/sunburn-poster.png",
+      quickView: {
+        label: "Watch trailer",
+        title: "Sun Burn Nitro trailer",
+        embedUrl: sunBurnTrailerEmbed,
+      },
     },
   ],
 } satisfies Record<Locale, Project[]>;
