@@ -8,22 +8,21 @@ type Props = {
 const { content } = Astro.props;
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 border-b border-white/15 bg-ink/85 text-white backdrop-blur">
+<header class="fixed inset-x-0 top-0 z-50 border-b border-flame/25 bg-ink/90 text-white shadow-brand backdrop-blur">
   <nav class="section-shell flex min-h-20 items-center justify-between gap-5 py-3" aria-label="Primary">
-    <a class="flex items-center gap-3 font-display text-lg font-extrabold" href={content.lang === "es" ? "/" : "/en/"}>
-      <img class="h-10 w-auto" src="/assets/img/vacaflama.png" alt="VacaFlama" />
-      <span>VacaFlama</span>
+    <a class="flex items-center gap-3" href={content.lang === "es" ? "/" : "/en/"}>
+      <img class="h-12 w-auto max-w-[12rem] object-contain sm:max-w-[15rem]" src={content.hero.logo} alt="VacaFlama" />
     </a>
     <div class="flex flex-wrap items-center justify-end gap-3 text-sm font-semibold sm:gap-5">
       {
         content.nav.map((item) => (
-          <a class="text-white/80 transition hover:text-white" href={item.href}>
+          <a class="text-white/78 transition hover:text-flame" href={item.href}>
             {item.label}
           </a>
         ))
       }
       <a
-        class="rounded-full border border-white/30 px-3 py-1.5 text-white transition hover:border-flame hover:bg-flame"
+        class="rounded-full border border-flame/50 px-3 py-1.5 text-white transition hover:border-flame hover:bg-flame"
         href={content.alternateHref}
         aria-label={`${content.languageLabel}: ${content.alternateLabel}`}
       >

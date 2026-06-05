@@ -39,6 +39,7 @@ export type SiteContent = {
     secondaryCta: string;
     background: string;
     logo: string;
+    mark: string;
   };
   projects: {
     eyebrow: string;
@@ -71,6 +72,12 @@ export type SiteContent = {
   };
 };
 
+const brand = {
+  logo: "/assets/brand/vacaflama-horizontal-red-crop.png",
+  mark: "/assets/brand/vacaflama-isotipo-crop.png",
+  hero: "/assets/sunburn/sunburn-gameplay.png",
+};
+
 const sharedProjects = {
   es: [
     {
@@ -97,13 +104,13 @@ const sharedProjects = {
     },
     {
       title: "Sun Burn Nitro",
-      tagline: "Carreras a alta velocidad",
+      tagline: "Carreras a alta velocidad con estilo arcade",
       description:
-        "Videojuego de carreras donde el jugador no solo gana corriendo, sino dando espectáculo. Ponte el cinturón, enciende motores y prepárate para competir.",
+        "Videojuego de carreras donde el jugador no solo gana corriendo, sino dando espectáculo. Ponte el cinturón, enciende motores y prepárate para competir bajo un sol imposible.",
       genre: "Carreras, acción",
       release: "En desarrollo",
-      cover: "/assets/img/projects/SBN1.png",
-      image: "/assets/img/projects/SBN2_Nuevo.png",
+      cover: "/assets/sunburn/sunburn-banner.png",
+      image: "/assets/sunburn/sunburn-poster.png",
     },
   ],
   en: [
@@ -131,13 +138,13 @@ const sharedProjects = {
     },
     {
       title: "Sun Burn Nitro",
-      tagline: "High-speed racing",
+      tagline: "High-speed arcade racing",
       description:
-        "A racing game where players win not only by driving fast, but by putting on a show. Buckle up, start your engines and get ready to compete.",
+        "A racing game where players win not only by driving fast, but by putting on a show. Buckle up, start your engines and compete under an impossible sun.",
       genre: "Racing, action",
       release: "In development",
-      cover: "/assets/img/projects/SBN1.png",
-      image: "/assets/img/projects/SBN2_Nuevo.png",
+      cover: "/assets/sunburn/sunburn-banner.png",
+      image: "/assets/sunburn/sunburn-poster.png",
     },
   ],
 } satisfies Record<Locale, Project[]>;
@@ -188,17 +195,18 @@ export const siteContent: Record<Locale, SiteContent> = {
       eyebrow: "Estudio independiente de videojuegos",
       title: "VacaFlama",
       copy:
-        "Creamos juegos con una mezcla de teatro, humor, velocidad y puzles. Somos un equipo pequeño que convierte ideas raras en experiencias jugables.",
+        "Creamos juegos con dientes, velocidad y mucho carácter: experiencias pequeñas, raras y jugables que mezclan teatro, humor y arcade.",
       primaryCta: "Ver proyectos",
       secondaryCta: "Conocer al equipo",
-      background: "/assets/img/header-bg.jpg",
-      logo: "/assets/img/vacaflama.png",
+      background: brand.hero,
+      logo: brand.logo,
+      mark: brand.mark,
     },
     projects: {
       eyebrow: "Portfolio",
-      title: "Juegos y prototipos",
+      title: "Juegos con identidad propia",
       copy:
-        "Una selección de proyectos publicados y en desarrollo, desde reinterpretaciones teatrales hasta carreras frenéticas.",
+        "Proyectos publicados y en desarrollo con una estética marcada: teatro, puzles, velocidad y energía arcade.",
       cta: "Jugar",
       genreLabel: "Género",
       releaseLabel: "Fecha",
@@ -210,7 +218,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         "Somos un pequeño equipo que empezó colaborando en un videojuego junto a la CNTC.",
         "Desde entonces seguimos trabajando juntos en nuevos proyectos, con Sun Burn Nitro como el desarrollo más reciente.",
       ],
-      highlights: ["Juegos independientes", "Narrativa y puzles", "Prototipos con carácter"],
+      highlights: ["Juegos independientes", "Narrativa y puzles", "Arcade con colmillo"],
     },
     team: {
       title: "Nuestro equipo",
@@ -220,7 +228,7 @@ export const siteContent: Record<Locale, SiteContent> = {
     },
     contact: {
       title: "Contacto",
-      copy: "Tú eliges por dónde contactarnos.",
+      copy: "¿Tienes una colaboración, evento o propuesta?",
       emailLabel: "Escríbenos",
       email: "vacaflamastudios@gmail.com",
     },
@@ -246,17 +254,18 @@ export const siteContent: Record<Locale, SiteContent> = {
       eyebrow: "Independent video game studio",
       title: "VacaFlama",
       copy:
-        "We create games that mix theatre, humor, speed and puzzles. We are a small team turning strange ideas into playable experiences.",
+        "We make games with teeth, speed and personality: small, strange, playable experiences mixing theatre, humor and arcade energy.",
       primaryCta: "View projects",
       secondaryCta: "Meet the team",
-      background: "/assets/img/header-bg.jpg",
-      logo: "/assets/img/vacaflama.png",
+      background: brand.hero,
+      logo: brand.logo,
+      mark: brand.mark,
     },
     projects: {
       eyebrow: "Portfolio",
-      title: "Games and prototypes",
+      title: "Games with a sharp identity",
       copy:
-        "A selection of published and in-development projects, from theatrical reinterpretations to frantic racing.",
+        "Published and in-development projects with a strong visual pulse: theatre, puzzles, speed and arcade energy.",
       cta: "Play",
       genreLabel: "Genre",
       releaseLabel: "Release",
@@ -268,7 +277,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         "We are a small team that started by collaborating on a video game with the CNTC.",
         "Since then we have kept working together on new projects, with Sun Burn Nitro as our latest in-development game.",
       ],
-      highlights: ["Independent games", "Narrative and puzzles", "Prototypes with character"],
+      highlights: ["Independent games", "Narrative and puzzles", "Arcade bite"],
     },
     team: {
       title: "Our team",
@@ -281,7 +290,7 @@ export const siteContent: Record<Locale, SiteContent> = {
     },
     contact: {
       title: "Contact",
-      copy: "Choose how you want to reach us.",
+      copy: "Have a collaboration, event or proposal?",
       emailLabel: "Email us",
       email: "vacaflamastudios@gmail.com",
     },

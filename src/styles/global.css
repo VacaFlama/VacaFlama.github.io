@@ -8,8 +8,8 @@ html {
 
 body {
   min-width: 320px;
-  background: #fff7ed;
-  color: #111827;
+  background: #080504;
+  color: #fff7f2;
 }
 
 img {
@@ -17,7 +17,7 @@ img {
 }
 
 ::selection {
-  background: #f97316;
+  background: #f20b1c;
   color: #ffffff;
 }
 
@@ -26,5 +26,12 @@ img {
 }
 
 .section-kicker {
-  @apply text-sm font-bold uppercase tracking-[0.18em] text-ember;
+  @apply text-sm font-extrabold uppercase tracking-[0.18em] text-flame;
+}
+
+.pixel-frame {
+  image-rendering: auto;
+  box-shadow:
+    0 0 0 1px rgb(242 11 28 / 0.28),
+    0 24px 80px -36px rgb(242 11 28 / 0.72);
 }
